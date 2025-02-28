@@ -1,5 +1,5 @@
 +++
-title = 'Leveraging Large Languange Models for Downstream Taks: From Fine-tuning to Retrival-augmented Generation (RAG)'
+title = 'Leveraging Large Language Models for Downstream Taks: From Fine-tuning to Retrival-augmented Generation (RAG)'
 date = 2025-02-25T02:00:00+01:00
 draft = false
 +++
@@ -58,7 +58,7 @@ We can also use BERT for this scenario:
 
 We can see that the output is diffrent based on the model in hand. The two important factors of an LLM few-shot capabilites are model size and quality and design of the prompt.
 
-For model size, the rule of thumb is that bigger is generally better. In "*Language Models are Few-Shot Learners*" the examined this comprehensivly.
+For model size, the rule of thumb is that bigger is generally better. This concept is examined comprehensively in the paper [*Language Models are Few-Shot Learners*](#references).
 
 <figcaption>
     <img alt="Larger models make increasingly efficient use of in-context information" title="Larger models make increasingly efficient use of in-context information" src="/images/in-context-learning-comparision.png"></img>
