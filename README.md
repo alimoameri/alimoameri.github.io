@@ -1,2 +1,2 @@
-# Ali Moameri's Personal Blog
-This is my personal blog, where I post technical stuff.
+# Ali Moameri's Blog
+This is my blog, where I post technical stuff.
