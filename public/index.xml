@@ -5,15 +5,17 @@
     <link>http://localhost:1313/</link>
     <description>Recent content on Ali Moameri&#39;s Blog</description>
     <generator>Hugo</generator>
-    <language>en-us</language>
+    <language>en</language>
+    <managingEditor>moammeriali@gmail.com (Ali Moameri)</managingEditor>
+    <webMaster>moammeriali@gmail.com (Ali Moameri)</webMaster>
     <lastBuildDate>Tue, 25 Feb 2025 02:00:00 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Leveraging Large Language Models for Downstream Taks: From Fine-tuning to Retrival-augmented Generation (RAG)</title>
       <link>http://localhost:1313/posts/leveraging-llms-for-downstream-tasks/</link>
-      <pubDate>Tue, 25 Feb 2025 02:00:00 +0100</pubDate>
+      <pubDate>Tue, 25 Feb 2025 02:00:00 +0100</pubDate><author>moammeriali@gmail.com (Ali Moameri)</author>
       <guid>http://localhost:1313/posts/leveraging-llms-for-downstream-tasks/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;A pre-trained large language model (PLM), also known as a foundational model, is trained in an unsupervised manner on massive volumes of text data. These models exhibit a strong ability to understand natural language structure and semantics. However, in their base form, they are not directly suitable for downstream tasks. For instance, a decoder-only LLM (e.g GPT3.5), pre-trained on vast amounts of text, is primarily designed to predict the next word in a sequence. Similarly, an encoder-only LLM (e.g BERT) can interpret input text and generate context-based word embeddings, but it cannot perform complex tasks like question answering or summarization without further adaptation.&lt;/p&gt;</description>
+      <description>There are two key strategies for leveraging pre-trained LLMs for downstream tasks: fine-tuning and few-shot learning. We will briefly explore both approaches, highlighting their benefits, challenges, and use cases.</description>
     </item>
   </channel>
 </rss>

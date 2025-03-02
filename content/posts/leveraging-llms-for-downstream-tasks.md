@@ -1,6 +1,8 @@
 +++
 title = 'Leveraging Large Language Models for Downstream Taks: From Fine-tuning to Retrival-augmented Generation (RAG)'
 date = 2025-02-25T02:00:00+01:00
+summary= "There are two key strategies for leveraging pre-trained LLMs for downstream tasks: fine-tuning and few-shot learning. We will briefly explore both approaches, highlighting their benefits, challenges, and use cases."
+tags= ["llms", "fine-tuning", "prompt-engineering", "rag", "few-shot-learning"]
 draft = false
 +++
 ## Introduction

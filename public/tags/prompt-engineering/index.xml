@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Ali Moameri&#39;s Blog</title>
-    <link>http://localhost:1313/posts/</link>
-    <description>Recent content in Posts on Ali Moameri&#39;s Blog</description>
+    <title>Prompt-Engineering on Ali Moameri&#39;s Blog</title>
+    <link>http://localhost:1313/tags/prompt-engineering/</link>
+    <description>Recent content in Prompt-Engineering on Ali Moameri&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <managingEditor>moammeriali@gmail.com (Ali Moameri)</managingEditor>
     <webMaster>moammeriali@gmail.com (Ali Moameri)</webMaster>
     <lastBuildDate>Tue, 25 Feb 2025 02:00:00 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/prompt-engineering/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Leveraging Large Language Models for Downstream Taks: From Fine-tuning to Retrival-augmented Generation (RAG)</title>
       <link>http://localhost:1313/posts/leveraging-llms-for-downstream-tasks/</link>
