@@ -9,7 +9,7 @@ summary = "Kenneth Ward Church in *Unix™ for Poets* shows how basic text proce
 
 Often, we become so captivated by complexity and sophistication that we overlook the profound effectiveness of simple, fundamental methods.
 
-Kenneth Ward Church in wonderful *Unix™ for Poets* [[1]](#references) shows how basic text processing tasks like splitting text into words, counting words, sorting words in rhyming order and even computing n-grams can be done by anybody using simple unix tools without any fancy tools or algorithms, even on a modest PC. In this article, we look at some basic NLP tasks using Unix tools based on Unix™ for Poets with Moby-Dick corpus [[2]](#references). Which is 214,492 words, 19,390 lines and 1.2M in size.
+Kenneth Ward Church in wonderful *Unix™ for Poets* [[1]](#references) shows how basic text processing tasks like splitting text into words, counting words, sorting words in rhyming order and even computing n-grams can be done by anybody using simple unix tools without any fancy tools or algorithms, even on a modest PC. In this article, we look at some basic NLP tasks using Unix tools based on Unix™ for Poets with Moby-Dick corpus [[2]](#references). Which is 214,492 words, 19,390 lines and 1.2MB in size.
 
 
 ## 1. Count Word Frequencis In a Text
@@ -65,7 +65,7 @@ To calculate world frequencies, we can simply use sort and uniq commands.
 ...
 ```
 
-An we have list of words sorted by frequency in the output. Note that there are some entries like a single s. It's beacuse we use a very simple word tokenization method, words like It's will break into two parts It and s. We can use more accurate tokenization methods, but in this simple example the simple appraoch serves us well.
+An we have list of words sorted by frequency in the output. Note that there are some entries like a single `s`. It's beacuse we use a very simple word tokenization method, words like It's will break into two parts It and s. We can use more accurate tokenization methods, but in this simple example the simple appraoch serves us well.
 
 Small changes to the tokenizing rule are easy to make, but can have a dramatic impact. For example we can count vowel sequences instead of words by changing the tokenizing rule to emit sequences of vowels rather than sequences of alphabetic characters.
 
@@ -92,9 +92,9 @@ Small changes to the tokenizing rule are easy to make, but can have a dramatic i
 ...
 ```
 
-With tr 'A-Z' 'a-z' we replace uppercase characters with lowercase ones and then with `tr -sc 'aeiou' '\n'` we replace any consonant (non-vowel) character with `\n`.
+With `tr 'A-Z' 'a-z'` we replace uppercase characters with lowercase ones and then with `tr -sc 'aeiou' '\n'` we replace any consonant (non-vowel) character with `\n`.
 
-## 2. Sort Words By ''Rhyming'' Order
+## 2. Sort Words By *Rhyming* Order
 
 Altough it may seem like a complex task but we can do a decsent job using a very simple technic. By *rhyming* order, we mean that the words should be sorted from the right rather than the left. So the only thing we should do it to reverse words and then sort them. We can reverse lines characterwise using rev command:
 
@@ -140,8 +140,12 @@ We can easily count bigrams (pairs of words), using this algorithm:
 We already know how to tokenize words and store the in words.txt file:
 
 ```bash
-  > tr -sc 'a-zA-Z' '\n' < moby.txt | tr 'A-Z' 'a-z' > words.txt
+> tr -sc 'a-zA-Z' '\n' < moby.txt | tr 'A-Z' 'a-z' > words.txt
+```
+
 For the second step we can use the tail command:
+
+```bash
 > tail +2 words.txt > next-words.txt
 > less next-words.txt
 ```
