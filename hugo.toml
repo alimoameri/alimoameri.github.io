@@ -42,37 +42,38 @@ toc = true
   id = "github"
   url = "https://github.com/alimoameri"
 
-# [[params.social]]
-#   id = "email"
-#   url = "moammeriali@gmail.com"
+[[params.social]]
+  id = "email"
+  url = "moammeriali@gmail.com"
 
 [[params.social]]
   id = "linkedin"
   url = "https://www.linkedin.com/in/ali-moameri-4345131b6/"
 
-# [[menu.main]]
-# identifier = "home"
-# name = "Home"
-# url = "/"
-# weight = 1
+[[menu.main]]
+identifier = "home"
+name = "Home"
+url = "/"
+weight = 1
 
-# [[menu.main]]
-# identifier = "about"
-# name = "About"
-# url = "/about/"
-# weight = 2
+[[menu.main]]
+name = "Posts"
+identifier = "posts"
+url = "/posts/"
+weight = 2
 
-# [[menu.main]]
-# identifier = "tags"
-# name = "Tags"
-# url = "/tags/"
-# weight = 3
+[[menu.main]]
+identifier = "tags"
+name = "Tags"
+url = "/tags/"
+weight = 3
 
-# [[menu.main]]
-# name = "Archive"
-# identifier = "archive"
-# url = "/posts/"
-# weight = 4
+
+[[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 4
 
 [languages]
 [languages.en]

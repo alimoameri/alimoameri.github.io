@@ -2,89 +2,89 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Ali Moameri&#39;s Blog</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>http://localhost:42629/tags/</link>
     <description>Recent content in Tags on Ali Moameri&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <managingEditor>moammeriali@gmail.com (Ali Moameri)</managingEditor>
     <webMaster>moammeriali@gmail.com (Ali Moameri)</webMaster>
     <lastBuildDate>Mon, 31 Mar 2025 17:25:37 +0330</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:42629/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Calculator</title>
-      <link>http://localhost:1313/tags/calculator/</link>
+      <link>http://localhost:42629/tags/calculator/</link>
       <pubDate>Mon, 31 Mar 2025 17:25:37 +0330</pubDate><author>moammeriali@gmail.com (Ali Moameri)</author>
-      <guid>http://localhost:1313/tags/calculator/</guid>
+      <guid>http://localhost:42629/tags/calculator/</guid>
       <description></description>
     </item>
     <item>
       <title>Linux</title>
-      <link>http://localhost:1313/tags/linux/</link>
+      <link>http://localhost:42629/tags/linux/</link>
       <pubDate>Mon, 31 Mar 2025 17:25:37 +0330</pubDate><author>moammeriali@gmail.com (Ali Moameri)</author>
-      <guid>http://localhost:1313/tags/linux/</guid>
+      <guid>http://localhost:42629/tags/linux/</guid>
       <description></description>
     </item>
     <item>
       <title>Math</title>
-      <link>http://localhost:1313/tags/math/</link>
+      <link>http://localhost:42629/tags/math/</link>
       <pubDate>Mon, 31 Mar 2025 17:25:37 +0330</pubDate><author>moammeriali@gmail.com (Ali Moameri)</author>
-      <guid>http://localhost:1313/tags/math/</guid>
+      <guid>http://localhost:42629/tags/math/</guid>
       <description></description>
     </item>
     <item>
       <title>Unix</title>
-      <link>http://localhost:1313/tags/unix/</link>
+      <link>http://localhost:42629/tags/unix/</link>
       <pubDate>Mon, 31 Mar 2025 17:25:37 +0330</pubDate><author>moammeriali@gmail.com (Ali Moameri)</author>
-      <guid>http://localhost:1313/tags/unix/</guid>
+      <guid>http://localhost:42629/tags/unix/</guid>
       <description></description>
     </item>
     <item>
       <title>Text_processing</title>
-      <link>http://localhost:1313/tags/text_processing/</link>
+      <link>http://localhost:42629/tags/text_processing/</link>
       <pubDate>Mon, 03 Mar 2025 00:26:11 +0330</pubDate><author>moammeriali@gmail.com (Ali Moameri)</author>
-      <guid>http://localhost:1313/tags/text_processing/</guid>
+      <guid>http://localhost:42629/tags/text_processing/</guid>
       <description></description>
     </item>
     <item>
       <title>Tr</title>
-      <link>http://localhost:1313/tags/tr/</link>
+      <link>http://localhost:42629/tags/tr/</link>
       <pubDate>Mon, 03 Mar 2025 00:26:11 +0330</pubDate><author>moammeriali@gmail.com (Ali Moameri)</author>
-      <guid>http://localhost:1313/tags/tr/</guid>
+      <guid>http://localhost:42629/tags/tr/</guid>
       <description></description>
     </item>
     <item>
       <title>Few-Shot-Learning</title>
-      <link>http://localhost:1313/tags/few-shot-learning/</link>
+      <link>http://localhost:42629/tags/few-shot-learning/</link>
       <pubDate>Tue, 25 Feb 2025 02:00:00 +0100</pubDate><author>moammeriali@gmail.com (Ali Moameri)</author>
-      <guid>http://localhost:1313/tags/few-shot-learning/</guid>
+      <guid>http://localhost:42629/tags/few-shot-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>Fine-Tuning</title>
-      <link>http://localhost:1313/tags/fine-tuning/</link>
+      <link>http://localhost:42629/tags/fine-tuning/</link>
       <pubDate>Tue, 25 Feb 2025 02:00:00 +0100</pubDate><author>moammeriali@gmail.com (Ali Moameri)</author>
-      <guid>http://localhost:1313/tags/fine-tuning/</guid>
+      <guid>http://localhost:42629/tags/fine-tuning/</guid>
       <description></description>
     </item>
     <item>
       <title>Llms</title>
-      <link>http://localhost:1313/tags/llms/</link>
+      <link>http://localhost:42629/tags/llms/</link>
       <pubDate>Tue, 25 Feb 2025 02:00:00 +0100</pubDate><author>moammeriali@gmail.com (Ali Moameri)</author>
-      <guid>http://localhost:1313/tags/llms/</guid>
+      <guid>http://localhost:42629/tags/llms/</guid>
       <description></description>
     </item>
     <item>
       <title>Prompt-Engineering</title>
-      <link>http://localhost:1313/tags/prompt-engineering/</link>
+      <link>http://localhost:42629/tags/prompt-engineering/</link>
       <pubDate>Tue, 25 Feb 2025 02:00:00 +0100</pubDate><author>moammeriali@gmail.com (Ali Moameri)</author>
-      <guid>http://localhost:1313/tags/prompt-engineering/</guid>
+      <guid>http://localhost:42629/tags/prompt-engineering/</guid>
       <description></description>
     </item>
     <item>
       <title>Rag</title>
-      <link>http://localhost:1313/tags/rag/</link>
+      <link>http://localhost:42629/tags/rag/</link>
       <pubDate>Tue, 25 Feb 2025 02:00:00 +0100</pubDate><author>moammeriali@gmail.com (Ali Moameri)</author>
-      <guid>http://localhost:1313/tags/rag/</guid>
+      <guid>http://localhost:42629/tags/rag/</guid>
       <description></description>
     </item>
   </channel>
