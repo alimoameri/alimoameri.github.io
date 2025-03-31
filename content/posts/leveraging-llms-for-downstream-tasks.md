@@ -39,7 +39,7 @@ Prompt engineering is a powerful and increasingly popular method for leveraging 
 For example GPT3 can do translation in a few-shot manner:
 
 <figcaption>
-    <img alt="GPT3 few-shot capability" title="GPT3 few-shot capability" src="/images/gpt-few-shot-translation.png"></img>
+    <img alt="GPT3 few-shot capability" title="GPT3 few-shot capability" src="/images/gpt-few-shot-translation.webp"></img>
     <caption><strong>GPT3 few-shot capability</strong>; GPT3, a model that is trained for next word prediction, can do translation in a few-shot manner.</caption>
 </figcaption>
 
@@ -47,14 +47,14 @@ As an another example, we can do sentiment-analyis by using LLM existing knowleg
 
 
 <figcaption>
-    <img alt="GPT4o-mini few-shot sentiment-analysis" title="GPT4o-mini few-shot sentiment-analysis" src="/images/gpt4o-mini-sentiment-analysis.png"></img>
+    <img alt="GPT4o-mini few-shot sentiment-analysis" title="GPT4o-mini few-shot sentiment-analysis" src="/images/gpt4o-mini-sentiment-analysis.webp"></img>
     <caption><strong>GPT4o-mini few-shot sentiment-analysis</strong></caption>
 </figcaption>
 
 We can also use BERT for this scenario:
 
 <figcaption>
-    <img alt="BERT few-shot sentiment-analysis" title="BERT few-shot sentiment-analysis" src="/images/bert-sentiment-analysis.png"></img>
+    <img alt="BERT few-shot sentiment-analysis" title="BERT few-shot sentiment-analysis" src="/images/bert-sentiment-analysis.webp"></img>
     <caption><strong>BERT few-shot sentiment-analysis</strong></caption>
 </figcaption>
 
@@ -63,14 +63,14 @@ We can see that the output is diffrent based on the model in hand. The two impor
 For model size, the rule of thumb is that bigger is generally better. This concept is examined comprehensively in the paper [*Language Models are Few-Shot Learners*](#references).
 
 <figcaption>
-    <img alt="Larger models make increasingly efficient use of in-context information" title="Larger models make increasingly efficient use of in-context information" src="/images/in-context-learning-comparision.png"></img>
+    <img alt="Larger models make increasingly efficient use of in-context information" title="Larger models make increasingly efficient use of in-context information" src="/images/in-context-learning-comparision.webp"></img>
     <caption>
         <strong>Larger models make increasingly efficient use of in-context information</strong> <a href="/posts/leveragin-llms-for-downstream-tasks/#references">[1]</a>
     </caption>
 </figcaption>
 
 <figcaption>
-    <img alt="LLM performance grows smoothly with model size" title="LLM performance grows smoothly with model size" src="/images/trivia-qa-few-shot.png"></img>
+    <img alt="LLM performance grows smoothly with model size" title="LLM performance grows smoothly with model size" src="/images/trivia-qa-few-shot.webp"></img>
     <caption>
         <strong>LLM performance grows smoothly with model size;</strong> suggesting that language models continue to absorb knowledge as their capacity increases <a href="/posts/leveragin-llms-for-downstream-tasks/#references"> [1]</a>
     </caption>
@@ -89,7 +89,7 @@ LLMs have inherent limitations, such as hallucinations and outdated internal kno
 RAG is an effective solution to these limitations. This technique allows the system to leverage existing domain-specific text data repositories to supplement the knowledge of the language model, thereby providing more accurate responses and reducing hallucinations 
 
 <figcaption>
-    <img alt="RAG process" title="RAG process" src="/images/rag.png"></img>
+    <img alt="RAG process" title="RAG process" src="/images/rag.webp"></img>
     <caption>
         <strong>RAG process</strong><a href="/posts/leveragin-llms-for-downstream-tasks/#references"> [2]</a>
     </caption>
