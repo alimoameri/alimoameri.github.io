@@ -41,7 +41,8 @@ years
 
 To calculate world frequencies, we can simply use sort and uniq commands.
 
-```bash> sort words.txt | uniq -c | sort -nr | less
+```bash
+> sort words.txt | uniq -c | sort -nr | less
   14178 the
    6467 of
    6321 and
