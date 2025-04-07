@@ -101,7 +101,6 @@ Altough it may seem like a complex task but we can do a decsent job using a very
 ```bash
 > tr -sc 'a-zA-Z' '\n' < moby.txt | tr 'A-Z' 'a-z' > words.txt
 > rev words.txt | sort | uniq | rev | less
-We can see that words that "rhyme" come together:
 a
 caramba
 cuba
@@ -137,7 +136,7 @@ We can easily count bigrams (pairs of words), using this algorithm:
 *Step 3*: Count
 
 
-We already know how to tokenize words and store the in words.txt file:
+We already know how to tokenize words and store the in `words.txt` file:
 
 ```bash
 > tr -sc 'a-zA-Z' '\n' < moby.txt | tr 'A-Z' 'a-z' > words.txt
@@ -150,11 +149,10 @@ For the second step we can use the tail command:
 > less next-words.txt
 ```
 
-With `tail +2 words.txt` we skip the first line and print from line 2 to the end. So `next-words.txt ` file is the `words.txt` with one line (word) shifted up. Finaly we can use paste command to merge lines in words.txt and `next-words.txt`:
+With `tail +2 words.txt` we skip the first line and print from line 2 to the end. So `next-words.txt ` file is the `words.txt` with one line (word) shifted up. Finaly we can use paste command to merge lines in `words.txt` and `next-words.txt`:
 
 ```bash
 > paste words.txt next-words.txt | sort | uniq -c | sort -nr | less
-And we can see the most frequent bigrams in the output:
    1840 of      the
    1146 in      the
     717 to      the
