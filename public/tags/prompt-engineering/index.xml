@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Prompt-Engineering on Ali Moameri</title>
+    <link>http://localhost:1313/tags/prompt-engineering/</link>
+    <description>Recent content in Prompt-Engineering on Ali Moameri</description>
+    <generator>Hugo -- 0.147.2</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 25 Feb 2025 02:00:00 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/prompt-engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Leveraging Large Language Models for Downstream Tasks: From Fine-tuning to Retrival-Augmented Generation (RAG)</title>
+      <link>http://localhost:1313/posts/leveraging-llms-for-downstream-tasks/</link>
+      <pubDate>Tue, 25 Feb 2025 02:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/leveraging-llms-for-downstream-tasks/</guid>
+      <description>There are two key strategies for leveraging pre-trained LLMs for downstream tasks: fine-tuning and few-shot learning. We will briefly explore both approaches, highlighting their benefits, challenges, and use cases.</description>
+    </item>
+  </channel>
+</rss>

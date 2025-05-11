@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ens on Ali Moameri</title>
+    <link>http://localhost:1313/en/</link>
+    <description>Recent content in Ens on Ali Moameri</description>
+    <generator>Hugo -- 0.147.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 31 Mar 2025 18:07:14 +0330</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/en/about/</link>
+      <pubDate>Mon, 31 Mar 2025 18:07:14 +0330</pubDate>
+      <guid>http://localhost:1313/en/about/</guid>
+      <description>&lt;p&gt;Hi! I’m &lt;strong&gt;Ali Moameri&lt;/strong&gt;— a Master’s student in Software Engineering. My research and projects primarily focus on:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Natural Language Processing (NLP)&lt;/li&gt;
+&lt;li&gt;Large Language Models (LLMs)&lt;/li&gt;
+&lt;li&gt;Information Retrieval&lt;/li&gt;
+&lt;li&gt;Retrieval-Augmented Generation (RAG)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I love diving deep into the technical challenges—and then writing about them to share what I learn.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>bc Is the Only Calculator You Need in Unix</title>
+      <link>http://localhost:1313/en/posts/bc-is-the-only-calculator-you-need-in-unix/</link>
+      <pubDate>Mon, 31 Mar 2025 17:25:37 +0330</pubDate>
+      <guid>http://localhost:1313/en/posts/bc-is-the-only-calculator-you-need-in-unix/</guid>
+      <description>&lt;code&gt;bc&lt;/code&gt;, for basic calculator, is an arbitrary-precision calculator language with syntax similar to the C programming language. In this post, we will explore the features of bc and how to use it.</description>
+    </item>
+    <item>
+      <title>Unix for Poets: Basic Text Processing Using Unix Tools</title>
+      <link>http://localhost:1313/en/posts/unix-for-poets/</link>
+      <pubDate>Mon, 03 Mar 2025 00:26:11 +0330</pubDate>
+      <guid>http://localhost:1313/en/posts/unix-for-poets/</guid>
+      <description>Kenneth Ward Church in &lt;em&gt;Unix™ for Poets&lt;/em&gt; shows how basic text processing tasks like splitting text into words, counting words, sorting words in rhyming order and even computing n-grams can be done by anybody using simple unix tools without any fancy tools or algorithms, even on a modest PC.</description>
+    </item>
+    <item>
+      <title>Leveraging Large Language Models for Downstream Tasks: From Fine-tuning to Retrival-Augmented Generation (RAG)</title>
+      <link>http://localhost:1313/en/posts/leveraging-llms-for-downstream-tasks/</link>
+      <pubDate>Tue, 25 Feb 2025 02:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/en/posts/leveraging-llms-for-downstream-tasks/</guid>
+      <description>There are two key strategies for leveraging pre-trained LLMs for downstream tasks: fine-tuning and few-shot learning. We will briefly explore both approaches, highlighting their benefits, challenges, and use cases.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Unix for Poets: Basic Text Processing Using Unix Tools | Ali Moameri</title>
+<meta name="keywords" content="unix, linux, tr, text_processing">
+<meta name="description" content="Kenneth Ward Church in Unix™ for Poets shows how basic text processing tasks like splitting text into words, counting words, sorting words in rhyming order and even computing n-grams can be done by anybody using simple unix tools without any fancy tools or algorithms, even on a modest PC.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/en/posts/unix-for-poets/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/en/posts/unix-for-poets/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Ali Moameri (Alt + H)">Ali Moameri</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Unix for Poets: Basic Text Processing Using Unix Tools
+    </h1>
+    <div class="post-meta"><span title='2025-03-03 00:26:11 +0330 +0330'>March 3, 2025</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Often, we become so captivated by complexity and sophistication that we overlook the profound effectiveness of simple, fundamental methods.</p>
+<p>Kenneth Ward Church in wonderful <em>Unix™ for Poets</em> <a href="#references">[1]</a> shows how basic text processing tasks like splitting text into words, counting words, sorting words in rhyming order and even computing n-grams can be done by anybody using simple unix tools without any fancy tools or algorithms, even on a modest PC. In this article, we look at some basic NLP tasks using Unix tools based on Unix™ for Poets with Moby-Dick corpus <a href="#references">[2]</a>. Which is 214,492 words, 19,390 lines and 1.2MB in size.</p>
+<h2 id="1-count-word-frequencis-in-atext">1. Count Word Frequencis In a Text<a hidden class="anchor" aria-hidden="true" href="#1-count-word-frequencis-in-atext">#</a></h2>
+<p>The problem is to input a text file, and output a list of words in the file along with their frequency counts. To split text into words we can use this simple method:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; tr -sc <span style="color:#e6db74">&#39;a-zA-Z&#39;</span> <span style="color:#e6db74">&#39;\n&#39;</span> &lt; moby.txt | tr <span style="color:#e6db74">&#39;A-Z&#39;</span> <span style="color:#e6db74">&#39;a-z&#39;</span> &gt; words.txt
+</span></span><span style="display:flex;"><span>&gt; less words.txt
+</span></span><span style="display:flex;"><span>moby
+</span></span><span style="display:flex;"><span>dick
+</span></span><span style="display:flex;"><span>or
+</span></span><span style="display:flex;"><span>the
+</span></span><span style="display:flex;"><span>whale
+</span></span><span style="display:flex;"><span>by
+</span></span><span style="display:flex;"><span>herman
+</span></span><span style="display:flex;"><span>melville
+</span></span><span style="display:flex;"><span>chapter
+</span></span><span style="display:flex;"><span>loomings
+</span></span><span style="display:flex;"><span>call
+</span></span><span style="display:flex;"><span>me
+</span></span><span style="display:flex;"><span>ishmael
+</span></span><span style="display:flex;"><span>some
+</span></span><span style="display:flex;"><span>years
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p><code>tr</code> can be used to translate or delete characters. Option <code>-c</code> means complement. So In this example we use <code>tr</code> to convert all non-alphabetical characters to <code>\n</code>. By <code>-s</code>, we specify to replace each sequence of a repeated character with a single occurrence of that character. Hence every time tr encounters a non-alphabetical character (eg. space, punctuation, numbers) It replaces it with a <code>\n</code> character. Finaly we replace all uppercase letters by lowercase ones. We store the result in words.txt file.</p>
+<p>To calculate world frequencies, we can simply use sort and uniq commands.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; sort words.txt | uniq -c | sort -nr | less
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">14178</span> the
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">6467</span> of
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">6321</span> and
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">4629</span> a
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">4537</span> to
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">4073</span> in
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">3036</span> that
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">2494</span> his
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">2489</span> it
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">2108</span> i
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1874</span> he
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1804</span> but
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1735</span> s
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1717</span> as
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1691</span> with
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1691</span> is
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1628</span> was
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1594</span> <span style="color:#66d9ef">for</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1513</span> all
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1377</span> this
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>An we have list of words sorted by frequency in the output. Note that there are some entries like a single <code>s</code>. It&rsquo;s beacuse we use a very simple word tokenization method, words like It&rsquo;s will break into two parts It and s. We can use more accurate tokenization methods, but in this simple example the simple appraoch serves us well.</p>
+<p>Small changes to the tokenizing rule are easy to make, but can have a dramatic impact. For example we can count vowel sequences instead of words by changing the tokenizing rule to emit sequences of vowels rather than sequences of alphabetic characters.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; tr <span style="color:#e6db74">&#39;A-Z&#39;</span> <span style="color:#e6db74">&#39;a-z&#39;</span> &lt; moby.txt | tr -sc <span style="color:#e6db74">&#39;aeiou&#39;</span> <span style="color:#e6db74">&#39;\n&#39;</span> | sort | uniq -c | sort -nr | less
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">94705</span> e
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">63440</span> a
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">53233</span> i
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">50012</span> o
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">14698</span> u
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">7597</span> ou
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">6274</span> ea
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">4197</span> ee
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">3352</span> ai
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">2734</span> oo
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1895</span> ie
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1575</span> io
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1307</span> ei
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1262</span> oa
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">962</span> ia
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">886</span> ue
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">769</span> oi
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">540</span> au
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>With <code>tr 'A-Z' 'a-z'</code> we replace uppercase characters with lowercase ones and then with <code>tr -sc 'aeiou' '\n'</code> we replace any consonant (non-vowel) character with <code>\n</code>.</p>
+<h2 id="2-sort-words-by-rhyming-order">2. Sort Words By <em>Rhyming</em> Order<a hidden class="anchor" aria-hidden="true" href="#2-sort-words-by-rhyming-order">#</a></h2>
+<p>Altough it may seem like a complex task but we can do a decsent job using a very simple technic. By <em>rhyming</em> order, we mean that the words should be sorted from the right rather than the left. So the only thing we should do it to reverse words and then sort them. We can reverse lines characterwise using rev command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; tr -sc <span style="color:#e6db74">&#39;a-zA-Z&#39;</span> <span style="color:#e6db74">&#39;\n&#39;</span> &lt; moby.txt | tr <span style="color:#e6db74">&#39;A-Z&#39;</span> <span style="color:#e6db74">&#39;a-z&#39;</span> &gt; words.txt
+</span></span><span style="display:flex;"><span>&gt; rev words.txt | sort | uniq | rev | less
+</span></span><span style="display:flex;"><span>a
+</span></span><span style="display:flex;"><span>caramba
+</span></span><span style="display:flex;"><span>cuba
+</span></span><span style="display:flex;"><span>juba
+</span></span><span style="display:flex;"><span>malacca
+</span></span><span style="display:flex;"><span>mecca
+</span></span><span style="display:flex;"><span>seneca
+</span></span><span style="display:flex;"><span>republica
+</span></span><span style="display:flex;"><span>oceanica
+</span></span><span style="display:flex;"><span>america
+</span></span><span style="display:flex;"><span>africa
+</span></span><span style="display:flex;"><span>da
+</span></span><span style="display:flex;"><span>armada
+</span></span><span style="display:flex;"><span>canada
+</span></span><span style="display:flex;"><span>andromeda
+</span></span><span style="display:flex;"><span>zogranda
+</span></span><span style="display:flex;"><span>anaconda
+</span></span><span style="display:flex;"><span>golconda
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><h2 id="3-n-grams">3. N-grams<a hidden class="anchor" aria-hidden="true" href="#3-n-grams">#</a></h2>
+<blockquote>
+<p>I have presented this material in quite a number of tutorials over the years. The students almost always come up with a big &lsquo;&lsquo;aha&rsquo;&rsquo; reaction at this point. Counting words seems easy enough, but for some reason, students are almost always pleasantly surprised to discover that counting ngrams (bigrams, trigrams, 50-grams) is just as easy as counting words. - <em>Kenneth Ward Church, Unix™ for Poets</em></p></blockquote>
+<p>We can easily count bigrams (pairs of words), using this algorithm:</p>
+<p><em>Step 1</em>: Tokenize by word</p>
+<p><em>Step 2</em>: Print word<!-- raw HTML omitted -->i<!-- raw HTML omitted --> and word<!-- raw HTML omitted -->i+1<!-- raw HTML omitted --> on the same line</p>
+<p><em>Step 3</em>: Count</p>
+<p>We already know how to tokenize words and store the in <code>words.txt</code> file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; tr -sc <span style="color:#e6db74">&#39;a-zA-Z&#39;</span> <span style="color:#e6db74">&#39;\n&#39;</span> &lt; moby.txt | tr <span style="color:#e6db74">&#39;A-Z&#39;</span> <span style="color:#e6db74">&#39;a-z&#39;</span> &gt; words.txt
+</span></span></code></pre></div><p>For the second step we can use the tail command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; tail +2 words.txt &gt; next-words.txt
+</span></span><span style="display:flex;"><span>&gt; less next-words.txt
+</span></span></code></pre></div><p>With <code>tail +2 words.txt</code> we skip the first line and print from line 2 to the end. So <code>next-words.txt </code> file is the <code>words.txt</code> with one line (word) shifted up. Finaly we can use paste command to merge lines in <code>words.txt</code> and <code>next-words.txt</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; paste words.txt next-words.txt | sort | uniq -c | sort -nr | less
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1840</span> of      the
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1146</span> in      the
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">717</span> to      the
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">432</span> from    the
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">377</span> the     whale
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">369</span> of      his
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">361</span> and     the
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">351</span> on      the
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">328</span> at      the
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">324</span> to      be
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">318</span> of      a
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">315</span> by      the
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">310</span> with    the
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">304</span> <span style="color:#66d9ef">for</span>     the
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">291</span> it      was
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">282</span> it      is
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">258</span> in      his
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">256</span> in      a
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">248</span> the     ship
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>We can count trigrams and more using this simple method. We can even make it a bash script:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>tr -sc <span style="color:#e6db74">&#39;a-zA-Z&#39;</span> <span style="color:#e6db74">&#39;\n&#39;</span> &lt; moby.txt | tr <span style="color:#e6db74">&#39;A-Z&#39;</span> <span style="color:#e6db74">&#39;a-z&#39;</span> &gt; $$words
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tail +2 $$words &gt; $$nextwords
+</span></span><span style="display:flex;"><span>tail +3 $$words &gt; $$nextwords2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>paste $$words $$nextwords $$nextwords2 | sort | uniq -c | sort -nr
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># remove the temporary files</span>
+</span></span><span style="display:flex;"><span>rm $$words $$nextwords $$nextwords2
+</span></span></code></pre></div><p>We can then run it and get trigrams sorted by frequency:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; sh mktrigram.sh &lt; moby.txt | less
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">114</span> the     sperm   whale
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">97</span> of      the     whale
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">88</span> the     white   whale
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">64</span> one     of      the
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">58</span> of      the     sea
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">56</span> out     of      the
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">53</span> the     ship    s
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">53</span> part    of      the
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">52</span> a       sort    of
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">50</span> the     whale   s
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">48</span> the     pequod  s
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">42</span> of      the     sperm
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">37</span> of      the     ship
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">36</span> i       don     t
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">35</span> the     right   whale
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">34</span> the     old     man
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">33</span> sperm   whale   s
+</span></span></code></pre></div><h2 id="4-find-palyndrome-words">4. Find Palyndrome Words<a hidden class="anchor" aria-hidden="true" href="#4-find-palyndrome-words">#</a></h2>
+<p>Palindrome words spelled the same backward and forward, i.e noon. We can find palyndrome with this algorithm:</p>
+<p><em>Step 1</em>: Revers each word</p>
+<p><em>Step 2</em>: Find words that are identical to their reverse</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; rev words.txt &gt; rev-words.txt 
+</span></span><span style="display:flex;"><span>&gt; paste words.txt rev-words.txt | awk <span style="color:#e6db74">&#39;$1 == $2&#39;</span> | sort | uniq | less
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>peep    peep
+</span></span><span style="display:flex;"><span>pip     pip
+</span></span><span style="display:flex;"><span>poop    poop
+</span></span><span style="display:flex;"><span>pop     pop
+</span></span><span style="display:flex;"><span>p       p
+</span></span><span style="display:flex;"><span>razar   razar
+</span></span><span style="display:flex;"><span>redder  redder
+</span></span><span style="display:flex;"><span>refer   refer
+</span></span><span style="display:flex;"><span>sees    sees
+</span></span><span style="display:flex;"><span>sexes   sexes
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><h2 id="5-conclusion">5. Conclusion<a hidden class="anchor" aria-hidden="true" href="#5-conclusion">#</a></h2>
+<p>Thanks to Kenneth Ward Church, we now understand that anyone can perform basic NLP tasks on their own PC using just Unix tools, even without specialized knowledge of NLP or complex algorithms. In today&rsquo;s landscape, dominated by the hype surrounding AI and large language models, we often underestimate the effectiveness and strength of simple, foundational techniques.</p>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<p>[1] <a href="https://www.cs.upc.edu/~padro/Unixforpoets.pdf">https://www.cs.upc.edu/~padro/Unixforpoets.pdf</a></p>
+<p>[2] <a href="https://courses.cs.washington.edu/courses/cse390c/22sp/lectures/moby.txt">Moby Deck Corpus</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/unix/">Unix</a></li>
+      <li><a href="http://localhost:1313/tags/linux/">Linux</a></li>
+      <li><a href="http://localhost:1313/tags/tr/">Tr</a></li>
+      <li><a href="http://localhost:1313/tags/text_processing/">Text_processing</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">Ali Moameri</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
