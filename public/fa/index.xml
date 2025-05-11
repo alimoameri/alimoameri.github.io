@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>علی معمری</title>
+    <link>http://localhost:1313/fa/</link>
+    <description>Recent content on علی معمری</description>
+    <generator>Hugo -- 0.147.2</generator>
+    <language>fa</language>
+    <lastBuildDate>Sun, 11 May 2025 20:16:41 +0330</lastBuildDate>
+    <atom:link href="http://localhost:1313/fa/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>به زودی</title>
+      <link>http://localhost:1313/fa/posts/coming-soon/</link>
+      <pubDate>Sun, 11 May 2025 20:16:41 +0330</pubDate>
+      <guid>http://localhost:1313/fa/posts/coming-soon/</guid>
+      <description>&lt;p&gt;به زودی..&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>درباره</title>
+      <link>http://localhost:1313/fa/about/</link>
+      <pubDate>Mon, 31 Mar 2025 18:07:14 +0330</pubDate>
+      <guid>http://localhost:1313/fa/about/</guid>
+      <description>&lt;p&gt;سلام! علی معمری هستم؛ دانشجوی مقطع کارشناسی ارشد مهندسی نرم‌افزار. تحقیقات و پروژه‌های من عمدتاً بر حوزه‌های زیر تمرکز دارن:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;پردازش زبان طبیعی (NLP)&lt;/li&gt;
+&lt;li&gt;مدل‌های زبان بزرگ (LLMs)&lt;/li&gt;
+&lt;li&gt;بازیابی اطلاعات&lt;/li&gt;
+&lt;li&gt;تولید با تقویت بازیابی (RAG)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;دوست دارم در مسائل فنی عمیق بشم و دانش و یافته‌های خودم رو به اشتراک بگذارم.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/alimoameri&#34;&gt;Github&lt;/a&gt; | &lt;a href=&#34;https://t.me/mycsjourney&#34;&gt;Telegram&lt;/a&gt; | &lt;a href=&#34;https://www.linkedin.com/in/ali-moameri-4345131b6/&#34;&gt;Linkedin&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,41 +1,11 @@
 baseURL = "https://alimoameri.github.io"
 languageCode = "en-us"
 defaultContentLanguage = "en"
-title = "Ali Moameri's Blog"
-theme = "anubis2"
-disqusShortname = ""
+title = "Ali Moameri"
+theme = "PaperMod"
 
 [pagination]
 pagerSize = 5
-
-
-[params.author]
-name = "Ali Moameri"
-email  = "moammeriali@gmail.com"
-# location = "Singapore"
-
-colorTheme = "auto"
-colorThemeSwitcher = true
-
-readMore = true
-readNextPosts = 2
-copyCodeButton = true
-rssAsSocialIcon = true
-locale = "en-us"
-math = true # true: enable mathjax globally (default is false)
-toc = true
-
-# # Graphcomment support
-# graphcommentId = ""
-
-# GiscusRepo = "Junyi-99/hugo-theme-anubis2"
-# GiscusRepoId = "R_kgDOLEp76Q"
-# GiscusCategory = "General"
-# GiscusCategoryId = "DIC_kwDOLEp76c4CcbPS"
-# GiscusLazyLoad = false
-# GiscusDataMapping = "pathname"
-
-# customCSS = ["custom-css/custom1.scss", "custom-css/custom2.css"]
 
 
 [[params.social]]
@@ -49,6 +19,10 @@ toc = true
 [[params.social]]
   id = "linkedin"
   url = "https://www.linkedin.com/in/ali-moameri-4345131b6/"
+
+[[params.social]]
+  id = "telegram"
+  url = "https://t.me/aliinaction"
 
 [[menu.main]]
 identifier = "home"
@@ -78,63 +52,61 @@ weight = 4
 [languages]
 [languages.en]
 languageName = "English"
+languagedirection ="ltr"
+contentDir = 'content/en'
 
-# [languages.fa]
-# languageName = "Farsi"
 
-# [[languages.fa.menu.main]]
-# identifier = "home"
-# name = "خانه"
-# url = "/"
-# weight = 1
+[languages.fa]
+languageName = "Farsi"
+languagedirection ="rtl"
+title="علی معمری"
+contentDir = 'content/fa'
 
-# [[languages.fa.menu.main]]
-# identifier = "about"
-# name = "O Hugo"
-# url = "/about/"
-# weight = 2
+[[languages.fa.menu.main]]
+identifier = "home"
+name = "خانه"
+url = "/"
+weight = 1
 
-# [[languages.fa.menu.main]]
-# identifier = "tags"
-# name = "Tagi"
-# url = "/tags/"
-# weight = 3
+[[languages.fa.menu.main]]
+identifier = "posts"
+name = "پست‌ها"
+url = "/posts/"
+weight = 2
 
-# [[languages.fa.menu.main]]
-# identifier = "archive"
-# name = "Archiwum"
-# url = "/posts/"
-# weight = 4
+[[languages.fa.menu.main]]
+identifier = "tags"
+name = "برچسب‌ها"
+url = "/tags/"
+weight = 3
 
-# [languages.fa.params]
-# languageCode = "pl-pl"
+[[languages.fa.menu.main]]
+identifier = "about"
+name = "درباره"
+url = "/about/"
+weight = 4
+
+[languages.fa.params]
+languageCode = "fa-fa"
 
 [taxonomies]
 category = "categories"
 tag = "tags"
 author = "authors"
 
-[markup]
-defaultMarkdownHandler = 'goldmark'
+# [markup]
+# defaultMarkdownHandler = 'goldmark'
 
-[markup.goldmark.renderer]
-unsafe = true
+# [markup.goldmark.renderer]
+# unsafe = true
 
-[markup.highlight]
-anchorLineNos      = false
-codeFences         = true # tested with true and false. Both work.
-noClasses          = true # If you run with markup.highlight.noClasses=false in your site configuration, you need a style sheet.
-style              = 'base16-snazzy'
-tabWidth           = 4
+# [markup.highlight]
+# anchorLineNos      = false
+# codeFences         = true # tested with true and false. Both work.
+# noClasses          = true # If you run with markup.highlight.noClasses=false in your site configuration, you need a style sheet.
+# style              = 'base16-snazzy'
+# tabWidth           = 4
 
-# [params.UmamiAnalytics]
-# enabled = true
-# dnt = false
-# id = "d01ce82c-c8f4-4714-ba37-ba4899f2a885"                                            # Website ID
-# datacache = false
-# url = "https://umami.xtra.science/script.js"
-# shareUrl = "https://umami.xtra.science/share/Fy0goUn0b9rrxxGe/hugo-theme-anubis2.netlify.app"
-
-# [params.GoogleAnalytics]
-# enabled = true
-# gtag = "G-32F16X8HLF"
+# # [params.GoogleAnalytics]
+# # enabled = true
+# # gtag = "G-32F16X8HLF"

@@ -1,709 +1,318 @@
 <!DOCTYPE html>
+<html lang="en" dir="ltr">
 
-
-<html lang="en" data-theme="">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    
-        
-<meta charset="utf-8">
-<meta name="HandheldFriendly" content="True">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer-when-downgrade">
-
-<title>bc Is the Only Calculator You Need in Unix - Ali Moameri&rsquo;s Blog</title>
-
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>bc Is the Only Calculator You Need in Unix | Ali Moameri</title>
+<meta name="keywords" content="unix, linux, calculator, math">
 <meta name="description" content="bc, for basic calculator, is an arbitrary-precision calculator language with syntax similar to the C programming language. In this post, we will explore the features of bc and how to use it.">
-
-
-
-
-
-<link rel="icon" type="image/x-icon" href="http://localhost:1313/favicon.ico">
-<link rel="apple-touch-icon-precomposed" href="http://localhost:1313/favicon.png">
-
-
-
-
-
-
-
-
-    
-
-
-
-<style>
-  body {
-    visibility: hidden;
-    opacity: 0;
-  }
-</style>
-
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/bc-is-the-only-calculator-you-need-in-unix/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/bc-is-the-only-calculator-you-need-in-unix/">
 <noscript>
-  <style>
-    body {
-      visibility: visible;
-      opacity: 1;
-    }
-  </style>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
 </noscript>
-
-
-
-
-    
-
-
-
-
-
-    
-    
-    
-
-    
-        <link rel="stylesheet" href="/css/style.4c42aa0abeac804c4933c54677c449cea1f723caae778425d031e98565a0cdef.css" integrity="sha256-TEKqCr6sgExJM8VGd8RJzqH3I8qud4Ql0DHphWWgze8=">
-    
-
-
-
-
-
-    
-
-
-
-
-
-    
-    
-    
-
-    
-        <link rel="stylesheet" href="/css/style.9c1888ebff42c0224ce04dac10cb2c401f1b77f54f78e8d87d73c3bed781c263.css" integrity="sha256-nBiI6/9CwCJM4E2sEMssQB8bd/VPeOjYfXPDvteBwmM=">
-    
-
-
-
-
-
-    
-
-
-
-
-
-    
-    
-    
-
-    
-        <link rel="stylesheet" href="/css/style.acd606c0fce58853afe0248d37bb41acbbcdd8b1aca2412b6c0fa760da0137f3.css" integrity="sha256-rNYGwPzliFOv4CSNN7tBrLvN2LGsokErbA&#43;nYNoBN/M=">
-    
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-    
-
-
-
-
-
-    
-    
-    
-
-    
-        <script src="/js/script.672e2309c296e07c18bcd08b28d797a56222ff941d65f308fba3158c44885b14.js" type="text/javascript" charset="utf-8" integrity="sha256-Zy4jCcKW4HwYvNCLKNeXpWIi/5QdZfMI&#43;6MVjESIWxQ="></script>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 </head>
-<body>
-    <a class="skip-main" href="#main">Skip to main content</a>
-    <div class="container">
-        <header class="common-header">
-            
-                <div class="header-top">
-    <div class="header-top-left">
-        <h1 class="site-title noselect">
-    <a href="/">Ali Moameri&#39;s Blog</a>
-</h1>
 
-        
-
-
-
-
-
-
-
-    
-        <div class="theme-switcher">
-            <span class="inline-svg">
-
-    
-
-
-    
-    
-    
-    
-    
-
-    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
-
-
-</span>
-
-        </div>
-    
-
-    <script>
-        const STORAGE_KEY = 'user-color-scheme'
-        const defaultTheme = "light"
-
-        let currentTheme
-        let switchButton
-        let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
-
-        function switchTheme(e) {
-            currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
-            if (localStorage) localStorage.setItem(STORAGE_KEY, currentTheme);
-            document.documentElement.setAttribute('data-theme', currentTheme);
-            changeGiscusTheme(currentTheme);
-            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
-        }
-
-        const autoChangeScheme = e => {
-            currentTheme = e.matches ? 'dark' : 'light'
-            document.documentElement.setAttribute('data-theme', currentTheme);
-            changeGiscusTheme(currentTheme);
-            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            switchButton = document.querySelector('.theme-switcher')
-            currentTheme = detectCurrentScheme()
-
-            if (currentTheme === 'auto') {
-                autoChangeScheme(autoDefinedScheme);
-                autoDefinedScheme.addListener(autoChangeScheme);
-            } else {
-                document.documentElement.setAttribute('data-theme', currentTheme)
-            }
-
-            if (switchButton) {
-                switchButton.addEventListener('click', switchTheme, false)
-            }
-
-            showContent();
-        })
-
-        function detectCurrentScheme() {
-            if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
-                return localStorage.getItem(STORAGE_KEY)
-            }
-            if (defaultTheme) {
-                return defaultTheme
-            }
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
-
-        function showContent() {
-            document.body.style.visibility = 'visible';
-            document.body.style.opacity = 1;
-        }
-
-        function changeGiscusTheme (theme) {
-            function sendMessage(message) {
-              const iframe = document.querySelector('iframe.giscus-frame');
-              if (!iframe) return;
-              iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-            }
-
-            sendMessage({
-              setConfig: {
-                theme: theme
-              }
-            });
-        }
-    </script>
-
-
-        <ul class="social-icons noselect">
-
-
-    
-        <li>
-            <a href="https://github.com/alimoameri" title="Github" rel="me">
-            <span class="inline-svg">
-
-    
-
-
-    
-    
-    
-    
-    
-
-    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
-
-
-</span>
-
-            </a>
-        </li>
-    
-
-    
-        <li>
-            <a href="https://www.linkedin.com/in/ali-moameri-4345131b6/" title="Linkedin" rel="me">
-            <span class="inline-svg">
-
-    
-
-
-    
-    
-    
-    
-    
-
-    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M8 11l0 5" /><path d="M8 8l0 .01" /><path d="M12 16l0 -5" /><path d="M16 16v-3a2 2 0 0 0 -4 0" /></svg>
-
-
-</span>
-
-            </a>
-        </li>
-    
-
-
-
-
-
-
-    <li>
-            <a href="/index.xml" title="RSS" rel="me">
-            <span class="inline-svg">
-
-    
-
-
-    
-    
-    
-    
-    
-
-    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
-
-
-</span>
-
-            </a>
-        </li>
-    
-
-</ul>
-
-    </div>
-    <div class="header-top-right">
-
-    </div>
-</div>
-
-
-    <nav></nav>
-
-
-
-
-
-
-
-
-            
-        </header>
-        <main id="main" tabindex="-1">
-            
-    
-
-    <article class="post h-entry">
-        <div class="post-header">
-            <header>
-                <h1 class="p-name post-title">bc Is the Only Calculator You Need in Unix</h1>
-                
-
-            </header>
-            
-
-
-
-<div class="post-info noselect">
-    
-        <div class="post-date dt-published">
-            <time datetime="2025-03-31">2025-03-31</time>
-            
-        </div>
-    
-
-    <a class="post-hidden-url u-url" href="/posts/bc-is-the-only-calculator-you-need-in-unix/">/posts/bc-is-the-only-calculator-you-need-in-unix/</a>
-    <a href="http://localhost:1313/" class="p-name p-author post-hidden-author h-card" rel="me">map[colortheme:auto colorthemeswitcher:true copycodebutton:true email:moammeriali@gmail.com locale:en-us math:true name:Ali Moameri readmore:true readnextposts:2 rssassocialicon:true toc:true]</a>
-
-
-    <div class="post-taxonomies">
-        
-        
-            <ul class="post-tags">
-                
-                    
-                    <li><a href="/tags/unix/">#Unix</a></li>
-                
-                    
-                    <li><a href="/tags/linux/">#Linux</a></li>
-                
-                    
-                    <li><a href="/tags/calculator/">#Calculator</a></li>
-                
-                    
-                    <li><a href="/tags/math/">#Math</a></li>
-                
-            </ul>
-        
-        
-    </div>
-</div>
-
-        </div>
-        
-
-  
-  
-
-
-
-
-  
-  
-  
-  <details class="toc noselect">
-    <summary>Table of Contents</summary>
-    <div class="inner"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#what-isbc">What is bc?</a></li>
-    <li><a href="#installing-bc">Installing bc</a></li>
-    <li><a href="#basic-usage">Basic Usage</a></li>
-    <li><a href="#working-with-variables">Working with Variables</a></li>
-    <li><a href="#functions-inbc">Functions in bc</a></li>
-    <li><a href="#using-bc-withfiles">Using bc with Files</a></li>
-    <li><a href="#more-advanced-calculations">More advanced calculations</a></li>
-    <li><a href="#setting-output-precision">Setting output precision</a></li>
-    <li><a href="#conclusion">Conclusion</a></li>
-    <li><a href="#references">References</a></li>
-  </ul>
-</nav></div>
-  </details>
-  
-
-
-
+<body class="" id="top">
 <script>
-  var toc = document.querySelector(".toc");
-  if (toc) {
-    toc.addEventListener("click", function () {
-      if (event.target.tagName !== "A") {
-        event.preventDefault();
-        if (this.open) {
-          this.open = false;
-          this.classList.remove("expanded");
-        } else {
-          this.open = true;
-          this.classList.add("expanded");
-        }
-      }
-    });
-  }
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
 </script>
 
-        <div class="content e-content">
-            <figcaption>
-    <img width="80%" alt="Example of `bc` usage" title="Example of `bc` usage" src="/images/bc-example.webp"></img>
-    <caption>
-        <strong>Example of <code>bc</code> usage</strong>
-    </caption>
-</figcaption>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Ali Moameri (Alt + H)">Ali Moameri</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="http://localhost:1313/fa/" title="Farsi"
+                            aria-label="Farsi">Fa</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      bc Is the Only Calculator You Need in Unix
+    </h1>
+    <div class="post-meta"><span title='2025-03-31 17:25:37 +0330 +0330'>March 31, 2025</span>
+
+</div>
+  </header> 
+  <div class="post-content"><!-- raw HTML omitted -->
 <p><code>bc</code>, for <em>basic calculator</em>, is an arbitrary-precision calculator language with syntax similar to the C programming language. In this post, we will explore the features of <code>bc</code> and how to use it.</p>
-<h2 id="what-isbc" >
-<div>
-    <a href="#what-isbc">
-        #
-    </a>
-    What is bc?
-</div>
-</h2>
+<h2 id="what-isbc">What is bc?<a hidden class="anchor" aria-hidden="true" href="#what-isbc">#</a></h2>
 <p><code>bc</code> is an arbitrary precision calculator language that supports both integer and floating-point arithmetic. It can handle complex mathematical operations, including trigonometric functions, logarithms, and more. <code>bc</code> is often used in shell scripts for calculations that require high precision.</p>
-<h2 id="installing-bc" >
-<div>
-    <a href="#installing-bc">
-        #
-    </a>
-    Installing bc
-</div>
-</h2>
+<h2 id="installing-bc">Installing bc<a hidden class="anchor" aria-hidden="true" href="#installing-bc">#</a></h2>
 <p>Most Unix-like systems come with <code>bc</code> pre-installed. You can check if it is available on your system by running:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; bc --version
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; bc --version
 </span></span></code></pre></div><p>If it is not installed, you can install it using your package manager. For example on Debian/Ubuntu:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; sudo apt-get install bc
-</span></span></code></pre></div><h2 id="basic-usage" >
-<div>
-    <a href="#basic-usage">
-        #
-    </a>
-    Basic Usage
-</div>
-</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; sudo apt-get install bc
+</span></span></code></pre></div><h2 id="basic-usage">Basic Usage<a hidden class="anchor" aria-hidden="true" href="#basic-usage">#</a></h2>
 <p>To start using <code>bc</code>, simply type <code>bc</code> in your terminal:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; bc
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; bc
 </span></span></code></pre></div><p>You will enter the <code>bc</code> interactive mode, where you can start typing your calculations. For example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; 5+3
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; 5+3
 </span></span></code></pre></div><p>Press Enter, and you will see the result:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ff9f43">8</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ae81ff">8</span>
 </span></span></code></pre></div><p>To exit <code>bc</code>, type quit or press <code>Ctrl + D</code></p>
 <p>You can also &ldquo;pipe&rdquo; echo output to <code>bc</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; <span style="color:#ff5c57">echo</span> <span style="color:#5af78e">&#39;2*6&#39;</span> | bc
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">12</span>
-</span></span></code></pre></div><h2 id="working-with-variables" >
-<div>
-    <a href="#working-with-variables">
-        #
-    </a>
-    Working with Variables
-</div>
-</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; echo <span style="color:#e6db74">&#39;2*6&#39;</span> | bc
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">12</span>
+</span></span></code></pre></div><h2 id="working-with-variables">Working with Variables<a hidden class="anchor" aria-hidden="true" href="#working-with-variables">#</a></h2>
 <p><code>bc</code> is programming language by it self, So you can define variables too. Enter <code>bc</code> interactive mode and define your variables in each line:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; <span style="color:#ff5c57">a</span><span style="color:#ff6ac1">=</span><span style="color:#ff9f43">4</span>
-</span></span><span style="display:flex;"><span>&gt; <span style="color:#ff5c57">b</span><span style="color:#ff6ac1">=</span><span style="color:#ff9f43">2</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; a<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>&gt; b<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
 </span></span><span style="display:flex;"><span>&gt; a*b
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">8</span>
-</span></span></code></pre></div><h2 id="functions-inbc" >
-<div>
-    <a href="#functions-inbc">
-        #
-    </a>
-    Functions in bc
-</div>
-</h2>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">8</span>
+</span></span></code></pre></div><h2 id="functions-inbc">Functions in bc<a hidden class="anchor" aria-hidden="true" href="#functions-inbc">#</a></h2>
 <p>You can define your own functions in <code>bc</code>. Here&rsquo;s an example of how to define and use a function:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; bc
-</span></span><span style="display:flex;"><span>&gt; define double<span style="color:#ff6ac1">(</span>x<span style="color:#ff6ac1">)</span> <span style="color:#ff6ac1">{</span><span style="color:#ff6ac1">return</span> x*2<span style="color:#ff6ac1">}</span>
-</span></span><span style="display:flex;"><span>&gt; double<span style="color:#ff6ac1">(</span>5<span style="color:#ff6ac1">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">10</span>
-</span></span></code></pre></div><h2 id="using-bc-withfiles" >
-<div>
-    <a href="#using-bc-withfiles">
-        #
-    </a>
-    Using bc with Files
-</div>
-</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; bc
+</span></span><span style="display:flex;"><span>&gt; define double<span style="color:#f92672">(</span>x<span style="color:#f92672">)</span> <span style="color:#f92672">{</span><span style="color:#66d9ef">return</span> x*2<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>&gt; double<span style="color:#f92672">(</span>5<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">10</span>
+</span></span></code></pre></div><h2 id="using-bc-withfiles">Using bc with Files<a hidden class="anchor" aria-hidden="true" href="#using-bc-withfiles">#</a></h2>
 <p>You can also use <code>bc</code> to read expressions from a file. For example create a file named <code>calc.txt</code> with the following content:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>5+3
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>5+3
 </span></span><span style="display:flex;"><span>10/2
 </span></span><span style="display:flex;"><span>4*7
 </span></span></code></pre></div><p>You can then run <code>bc</code> with this file as input:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; bc calc.txt
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">8</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">5</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">28</span>
-</span></span></code></pre></div><h2 id="more-advanced-calculations" >
-<div>
-    <a href="#more-advanced-calculations">
-        #
-    </a>
-    More advanced calculations
-</div>
-</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; bc calc.txt
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">8</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">28</span>
+</span></span></code></pre></div><h2 id="more-advanced-calculations">More advanced calculations<a hidden class="anchor" aria-hidden="true" href="#more-advanced-calculations">#</a></h2>
 <p>If basic calculation is not enough for you, a standard math library is also available by the command line option <code>-l</code> or <code>--mathlib</code>. If requested, the math library is defined before processing any files. By typing executing <code>bc -l</code> command, you can enter interactive mode with standard math library defined as well:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; bc -l
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; bc -l
 </span></span></code></pre></div><p>Now you can calculate a sine (<code>s</code>), cosine (<code>c</code>), arctangent (<code>a</code>), natural logarithm (<code>l</code>), exponential (<code>e</code>) function as well using mathlib:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; bc -l
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; bc -l
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&gt; s<span style="color:#ff6ac1">(</span>90<span style="color:#ff6ac1">)</span>
+</span></span><span style="display:flex;"><span>&gt; s<span style="color:#f92672">(</span>90<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>.89399666360055789051
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&gt; c<span style="color:#ff6ac1">(</span>90<span style="color:#ff6ac1">)</span>
+</span></span><span style="display:flex;"><span>&gt; c<span style="color:#f92672">(</span>90<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>-.44807361612917015236
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&gt; a<span style="color:#ff6ac1">(</span>90<span style="color:#ff6ac1">)</span>
+</span></span><span style="display:flex;"><span>&gt; a<span style="color:#f92672">(</span>90<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>1.55968567289728914662
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&gt; l<span style="color:#ff6ac1">(</span>2.71<span style="color:#ff6ac1">)</span>
+</span></span><span style="display:flex;"><span>&gt; l<span style="color:#f92672">(</span>2.71<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>.99694863489160953206
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&gt; e<span style="color:#ff6ac1">(</span>1<span style="color:#ff6ac1">)</span>
+</span></span><span style="display:flex;"><span>&gt; e<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>2.71828182845904523536
-</span></span></code></pre></div><h2 id="setting-output-precision" >
-<div>
-    <a href="#setting-output-precision">
-        #
-    </a>
-    Setting output precision
-</div>
-</h2>
+</span></span></code></pre></div><h2 id="setting-output-precision">Setting output precision<a hidden class="anchor" aria-hidden="true" href="#setting-output-precision">#</a></h2>
 <p>You can set the output precision by changing <code>scale</code> variable. When running <code>bc</code> with no command line option, By default it&rsquo;s set to <code>0</code>. If running with <code>-l</code> option (define mathlib) it&rsquo;s set to <code>20</code> by deafult. we can change it to what ever we want:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; bc -l
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; bc -l
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>&gt; scale
-</span></span><span style="display:flex;"><span><span style="color:#ff9f43">20</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">20</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&gt; <span style="color:#ff5c57">scale</span><span style="color:#ff6ac1">=</span><span style="color:#ff9f43">2</span>
+</span></span><span style="display:flex;"><span>&gt; scale<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&gt; s<span style="color:#ff6ac1">(</span>90<span style="color:#ff6ac1">)</span>
+</span></span><span style="display:flex;"><span>&gt; s<span style="color:#f92672">(</span>90<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>.88
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&gt; c<span style="color:#ff6ac1">(</span>90<span style="color:#ff6ac1">)</span>
+</span></span><span style="display:flex;"><span>&gt; c<span style="color:#f92672">(</span>90<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>-.44
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&gt; a<span style="color:#ff6ac1">(</span>90<span style="color:#ff6ac1">)</span>
+</span></span><span style="display:flex;"><span>&gt; a<span style="color:#f92672">(</span>90<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>1.55
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&gt; l<span style="color:#ff6ac1">(</span>2.71<span style="color:#ff6ac1">)</span>
+</span></span><span style="display:flex;"><span>&gt; l<span style="color:#f92672">(</span>2.71<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>.99
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&gt; e<span style="color:#ff6ac1">(</span>1<span style="color:#ff6ac1">)</span>
+</span></span><span style="display:flex;"><span>&gt; e<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>2.71
-</span></span></code></pre></div><h2 id="conclusion" >
-<div>
-    <a href="#conclusion">
-        #
-    </a>
-    Conclusion
-</div>
-</h2>
+</span></span></code></pre></div><h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
 <p>The <code>bc</code> command is a versatile tool for performing calculations in Unix. With its support for arbitrary precision, variables, functions, and file input, it can handle a wide range of mathematical tasks. Whether you are a developer, a data analyst, or just someone who needs to perform calculations, <code>bc</code> is a valuable addition to your toolkit.</p>
-<h2 id="references" >
-<div>
-    <a href="#references">
-        #
-    </a>
-    References
-</div>
-</h2>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
 <p>[1] <a href="https://en.wikipedia.org/wiki/Bc_%28programming_language%29">https://en.wikipedia.org/wiki/Bc_(programming_language)</a></p>
 <p>[2] <a href="https://www.gnu.org/software/bc/manual/html_mono/bc.html">https://www.gnu.org/software/bc/manual/html_mono/bc.html</a></p>
 
-        </div>
 
-    </article>
+  </div>
 
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/unix/">Unix</a></li>
+      <li><a href="http://localhost:1313/tags/linux/">Linux</a></li>
+      <li><a href="http://localhost:1313/tags/calculator/">Calculator</a></li>
+      <li><a href="http://localhost:1313/tags/math/">Math</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
     
-    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">Ali Moameri</a></span> · 
 
-    
-        
-        
-            <h3 class="read-next-title noselect">Read next</h3>
-            <ul class="read-next-posts noselect">
-                
-                <li><a href="/posts/unix-for-poets/">Unix for Poets: Basic Text Processing Using Unix Tools</a></li>
-                
-            </ul>
-        
-    
-
-    
-
-    
-        
-
-
-
-
-
-
-
-
-
-    
-
-    
-
-    
-
-    
-
-        </main>
-        
-            <footer class="common-footer noselect">
-    
-    
-
-    <div class="common-footer-bottom">
-        
-
-        <div style="display: flex; align-items: center; gap:8px">
-            ©  Ali Moameri,  2025
-            
-        </div>
-        <div style="display:flex;align-items: center">
-            
-            
-            
-            
-            
-            
-        </div>
-        <div>
-            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/Junyi-99/hugo-theme-anubis2">Anubis2</a>.<br>
-            
-
-        </div>
-    </div>
-
-    <p class="h-card vcard">
-
-    <a href=http://localhost:1313/ class="p-name u-url url fn" rel="me">map[colortheme:auto colorthemeswitcher:true copycodebutton:true email:moammeriali@gmail.com locale:en-us math:true name:Ali Moameri readmore:true readnextposts:2 rssassocialicon:true toc:true]</a>
-
-    
-
-    
-</p>
-
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
 </footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
 
-        
-    </div>
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
 </body>
+
 </html>
