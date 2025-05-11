@@ -107,6 +107,6 @@ author = "authors"
 # style              = 'base16-snazzy'
 # tabWidth           = 4
 
-# # [params.GoogleAnalytics]
-# # enabled = true
-# # gtag = "G-32F16X8HLF"
+[params.GoogleAnalytics]
+enabled = true
+gtag = "G-32F16X8HLF"
