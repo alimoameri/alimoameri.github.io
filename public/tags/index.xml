@@ -1,89 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tags on Ali Moameri</title>
+    <title>Tags on My New Hugo Site</title>
     <link>http://localhost:1313/tags/</link>
-    <description>Recent content in Tags on Ali Moameri</description>
+    <description>Recent content in Tags on My New Hugo Site</description>
     <generator>Hugo -- 0.147.2</generator>
-    <language>en</language>
-    <lastBuildDate>Mon, 31 Mar 2025 17:25:37 +0330</lastBuildDate>
+    <language>en-us</language>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Calculator</title>
-      <link>http://localhost:1313/tags/calculator/</link>
-      <pubDate>Mon, 31 Mar 2025 17:25:37 +0330</pubDate>
-      <guid>http://localhost:1313/tags/calculator/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Linux</title>
-      <link>http://localhost:1313/tags/linux/</link>
-      <pubDate>Mon, 31 Mar 2025 17:25:37 +0330</pubDate>
-      <guid>http://localhost:1313/tags/linux/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Math</title>
-      <link>http://localhost:1313/tags/math/</link>
-      <pubDate>Mon, 31 Mar 2025 17:25:37 +0330</pubDate>
-      <guid>http://localhost:1313/tags/math/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Unix</title>
-      <link>http://localhost:1313/tags/unix/</link>
-      <pubDate>Mon, 31 Mar 2025 17:25:37 +0330</pubDate>
-      <guid>http://localhost:1313/tags/unix/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Text_processing</title>
-      <link>http://localhost:1313/tags/text_processing/</link>
-      <pubDate>Mon, 03 Mar 2025 00:26:11 +0330</pubDate>
-      <guid>http://localhost:1313/tags/text_processing/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tr</title>
-      <link>http://localhost:1313/tags/tr/</link>
-      <pubDate>Mon, 03 Mar 2025 00:26:11 +0330</pubDate>
-      <guid>http://localhost:1313/tags/tr/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Few-Shot-Learning</title>
-      <link>http://localhost:1313/tags/few-shot-learning/</link>
-      <pubDate>Tue, 25 Feb 2025 02:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/tags/few-shot-learning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Fine-Tuning</title>
-      <link>http://localhost:1313/tags/fine-tuning/</link>
-      <pubDate>Tue, 25 Feb 2025 02:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/tags/fine-tuning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Llms</title>
-      <link>http://localhost:1313/tags/llms/</link>
-      <pubDate>Tue, 25 Feb 2025 02:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/tags/llms/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Prompt-Engineering</title>
-      <link>http://localhost:1313/tags/prompt-engineering/</link>
-      <pubDate>Tue, 25 Feb 2025 02:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/tags/prompt-engineering/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Rag</title>
-      <link>http://localhost:1313/tags/rag/</link>
-      <pubDate>Tue, 25 Feb 2025 02:00:00 +0100</pubDate>
-      <guid>http://localhost:1313/tags/rag/</guid>
-      <description></description>
-    </item>
   </channel>
 </rss>
