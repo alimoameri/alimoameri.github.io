@@ -108,5 +108,5 @@ author = "authors"
 # tabWidth           = 4
 
 [params.GoogleAnalytics]
-enabled = true
-gtag = "G-32F16X8HLF"
+enabled = false
+gtag = ""
