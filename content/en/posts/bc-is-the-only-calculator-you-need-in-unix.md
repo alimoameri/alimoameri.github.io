@@ -6,12 +6,12 @@ tags = ["unix", "linux", "calculator", "math"]
 summary = "`bc`, for basic calculator, is an arbitrary-precision calculator language with syntax similar to the C programming language. In this post, we will explore the features of bc and how to use it."
 +++
 
-<figcaption>
-    <img width="80%" alt="Example of `bc` usage" title="Example of `bc` usage" src="/images/bc-example.webp"></img>
-    <caption>
+<figure>
+    <img width="80%" alt="Example of `bc` usage" title="Example of `bc` usage" src="/images/bc-example.webp" ></img>
+    <figcaption>
         <strong>Example of <code>bc</code> usage</strong>
-    </caption>
-</figcaption>
+    </figcaption>
+</figure>
 
 `bc`, for *basic calculator*, is an arbitrary-precision calculator language with syntax similar to the C programming language. In this post, we will explore the features of `bc` and how to use it.
 

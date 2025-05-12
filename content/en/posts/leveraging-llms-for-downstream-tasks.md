@@ -15,10 +15,11 @@ To bridge this gap, there are two key strategies for leveraging pre-trained LLMs
 
 Fine-tuning pre-trained LLMs is a common approach for adapting these models to specific downstream tasks. This approach involves taking a pre-trained model and further training it on a task-specific dataset, allowing the model's weights to be updated in order to minimize a specific loss function for the target task. This process enables the model to specialize in the target task while retaining the general language understanding acquired during pre-training. For example, BERT achieves state-of-the-art performance in tasks such as text classification and question answering after fine-tuning on task-specific datasets.
 
-<figcaption>
+<figure>
     <img alt="Stages of an LLM" title="Stages of an LLM" src="/images/llm-training-states-en.svg"></img>
-    <caption><strong>Stages of an LLM</strong>; First an LLM is pre-treained on massive text data so it can do next or masked token prediction. Then it should be fine-tuned for a specific downstream task.</caption>
-</figcaption>
+    <figcaption><strong>Stages of an LLM</strong>; First an LLM is pre-treained on massive text data so it can do next or masked token prediction. Then it should be fine-tuned for a specific downstream task.</figcaption>
+</figure>
+
 
 Fine-tuning typically requires a substantial amount of labeled data for the target task. Fine-tuning on small, task-specific datasets can lead to *overfitting*, where the model performs well on the training data but poorly on unseen data. In domains where labeled data is scarce, this can be a significant limitation. Another problem is *catastrophic forgetting* when fine-tuning, there is a risk that the model may "forget" some of the general knowledge it learned during pre-training. This can be particularly problematic in multi-task learning scenarios.
 
@@ -38,43 +39,43 @@ Prompt engineering is a powerful and increasingly popular method for leveraging 
 
 For example GPT3 can do translation in a few-shot manner:
 
-<figcaption>
+<figure>
     <img alt="GPT3 few-shot capability" title="GPT3 few-shot capability" src="/images/gpt-few-shot-translation.webp"></img>
-    <caption><strong>GPT3 few-shot capability</strong>; GPT3, a model that is trained for next word prediction, can do translation in a few-shot manner.</caption>
-</figcaption>
+    <figcaption><strong>GPT3 few-shot capability</strong>; GPT3, a model that is trained for next word prediction, can do translation in a few-shot manner.</figcaption>
+</figure>
 
 As an another example, we can do sentiment-analyis by using LLM existing knowlege and reasoning capabilities to perform tasks with only a few examples or instructions:
 
 
-<figcaption>
+<figure>
     <img alt="GPT4o-mini few-shot sentiment-analysis" title="GPT4o-mini few-shot sentiment-analysis" src="/images/gpt4o-mini-sentiment-analysis.webp"></img>
-    <caption><strong>GPT4o-mini few-shot sentiment-analysis</strong></caption>
-</figcaption>
+    <figcaption><strong>GPT4o-mini few-shot sentiment-analysis</strong></figcaption>
+</figure>
 
 We can also use BERT for this scenario:
 
-<figcaption>
+<figure>
     <img alt="BERT few-shot sentiment-analysis" title="BERT few-shot sentiment-analysis" src="/images/bert-sentiment-analysis.webp"></img>
-    <caption><strong>BERT few-shot sentiment-analysis</strong></caption>
-</figcaption>
+    <figcaption><strong>BERT few-shot sentiment-analysis</strong></figcaption>
+</figure>
 
 We can see that the output is diffrent based on the model in hand. The two important factors of an LLM few-shot capabilites are model size and quality and design of the prompt.
 
 For model size, the rule of thumb is that bigger is generally better. This concept is examined comprehensively in the paper [*Language Models are Few-Shot Learners*](#references).
 
-<figcaption>
+<figure>
     <img alt="Larger models make increasingly efficient use of in-context information" title="Larger models make increasingly efficient use of in-context information" src="/images/in-context-learning-comparision.webp"></img>
-    <caption>
+    <figcaption>
         <strong>Larger models make increasingly efficient use of in-context information</strong> <a href="/posts/leveragin-llms-for-downstream-tasks/#references">[1]</a>
-    </caption>
-</figcaption>
+    </figcaption>
+</figure>
 
-<figcaption>
+<figure>
     <img alt="LLM performance grows smoothly with model size" title="LLM performance grows smoothly with model size" src="/images/trivia-qa-few-shot.webp"></img>
-    <caption>
+    <figcaption>
         <strong>LLM performance grows smoothly with model size;</strong> suggesting that language models continue to absorb knowledge as their capacity increases <a href="/posts/leveragin-llms-for-downstream-tasks/#references"> [1]</a>
-    </caption>
-</figcaption>
+    </figcaption>
+</figure>
 
 We can observe that smaller models perform poorly in few-shot scenarios. For instance, a small model like BERT (with 110 million parameters) is not suitable for performing downstream tasks in a few-shot manner. In contrast, larger models like GPT-3 (with 175 billion parameters) are well-suited for these scenarios and can handle a wide variety of tasks with just prompt-engineering, without the need for any fine-tuning, thanks to their few-shot capabilities.
 
@@ -88,12 +89,12 @@ LLMs have inherent limitations, such as hallucinations and outdated internal kno
 
 RAG is an effective solution to these limitations. This technique allows the system to leverage existing domain-specific text data repositories to supplement the knowledge of the language model, thereby providing more accurate responses and reducing hallucinations 
 
-<figcaption>
+<figure>
     <img alt="RAG process" title="RAG process" src="/images/rag.webp"></img>
-    <caption>
+    <figcaption>
         <strong>RAG process</strong><a href="/posts/leveragin-llms-for-downstream-tasks/#references"> [2]</a>
-    </caption>
-</figcaption>
+    </figcaption>
+</figure>
 
 RAG combines retrieval-based methods with generative models. In RAG, a retriever first fetches relevant documents from an external knowledge base, which are then used by a generative model to produce responses. This approach enhances the model's ability to generate accurate and contextually relevant answers, particularly for knowledge-intensive tasks such as question answering and fact-checking. **RAG can be seen as an extension of in-context learning, where the context is dynamically retrieved from external sources rather than being explicitly provided in the prompt**. By integrating retrieval with the generative and comprehension capabilities of large language models, RAG addresses key limitations of traditional large language models, which include reliance on static knowledge and vulnerability to generating incorrect or outdated information.
 
