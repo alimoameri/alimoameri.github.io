@@ -45,6 +45,11 @@ https://example.com/Better.Call.Saul.S05E09.mkv
 https://example.com/Better.Call.Saul.S05E10.mkv
 ```
 
+همچنین با `printf` هم می‌شه، نیاز به `tr` هم نیست.
+
+```bash
+printf "https://example.com/Better.Call.Saul.S05E%02d.mkv\n" {01..10}
+```
 حالا که تونستیم لینک‌ها رو تولید کنیم کافیه با `wget` دانلودشون کنیم. بسته به سرور، امکان داره که خطای `403` بگیریم. برای حل این مشکل کافیه یک `user-agent` برای `wget` تنظیم کنیم.
 
 ```bash
